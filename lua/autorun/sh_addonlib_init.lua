@@ -3,7 +3,7 @@ addonlib.baseprefix = "[Addon Library] "
 addonlib.bclr = {} -- The base color list
 addonlib.bclr.white = Color(255, 255, 255) -- white
 addonlib.bclr.black = Color(0, 0, 0) -- black
-addonlib.bclr.chat = Color(31, 202, 245) -- chat color
+addonlib.bclr.chat = Color(47, 0, 255) -- chat color
 addonlib.bclr.green = Color(0, 255, 0)
 
 -- this is the debug command
@@ -14,7 +14,7 @@ end
 -- addonlib lets you add a file directory to include
 -- it uses 'cl_', 'sh_', and 'sv_' prefixes
 addonlib.includeFiles = function(dir)
-    local files, folders = file.Find(dir .. "*", LUA)
+    local files, folders = file.Find(dir .. "*", "LUA")
 
     for k, v in pairs(files) do
         if (string.StartWith(v, "sh_")) then
