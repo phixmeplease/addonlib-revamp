@@ -1,6 +1,6 @@
 surface.CreateFont("addonlib.fonts.buttonFont", {
     font = "Montserrat Medium",
-    size = 30,
+    size = 25,
     weight = 500,
 })
 
@@ -15,27 +15,40 @@ function PANEL:Init()
 
     self.active = 0
 
-    self:SetTall(50)
+    self:SetWide(200)
+
+    self.canvas = self:Add("DPanel")
+    self.canvas:Dock(FILL)
+    self.canvas:DockMargin(10, 10, 10, 10)
+
+    self.canvas.Paint = function(s, w, h)
+        local aX, aY = s:LocalToScreen()
+        BSHADOWS.BeginShadow()
+        draw.RoundedBox(6, aX, aY, w, h, addonlib.theme.navbar.background)
+        BSHADOWS.EndShadow(2, 1, 1)
+    end
 end
 
-function PANEL:AddTab(name, panel, panelFunc)
+function PANEL:AddTab(name, panel, panelFunc, ico)
+    ico = ico or "https://i.imgur.com/EX7D8Og.png"
+
     local i = table.Count(self.buttons) + 1
-    self.buttons[i] = self:Add("DButton")
+    self.buttons[i] = self.canvas:Add("DButton")
     local btn = self.buttons[i]
     btn.id = i
     btn:Dock(TOP)
     btn:SetText(name)
     btn:SetFont("addonlib.fonts.buttonFont")
     btn:SetColor(addonlib.theme.navbar.text)
-    btn:SizeToContentsY(10)
+    btn:SetTall(32)
     btn:SizeToContentsX(32)
+    btn:SetText("")
     btn:SetContentAlignment(4)
     btn:SetTextInset(5, 0)
     btn.Paint = function(s, w, h)
-        if (self.active == btn.id) then
-            --draw.RoundedBox(0, 0, h - 3, w, 3, addonlib.theme.navbar.acent)
-            draw.RoundedBox(0, w - 3, 0, 3, h, addonlib.theme.navbar.acent)
-        end
+        addonlib.WebImage( ico, 5, 5, h - 10, h - 10, (self.active == btn.id) and addonlib.theme.navbar.acent or addonlib.bclr.white, 0, 0 )
+
+        draw.SimpleText(name, "addonlib.fonts.buttonFont", h, h / 2, (self.active == btn.id) and addonlib.theme.navbar.acent or addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
     btn.DoClick = function(s)
         self:SetActive(s.id)
@@ -77,9 +90,7 @@ function PANEL:SetActive(id)
     end
 end
 
-function PANEL:Paint(w, h)
-    draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.navbar.background)
-end
+function PANEL:Paint(w, h) end
 
 function PANEL:Think()
     local w = self:GetWide()

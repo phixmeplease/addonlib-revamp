@@ -12,5 +12,3 @@ function addonlib.circle( x, y, radius, seg )
 
 	surface.DrawPoly( cir )
 end
-
-print("Loaded Circles")
