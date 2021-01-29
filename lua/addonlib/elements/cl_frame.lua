@@ -41,6 +41,7 @@ function PANEL:Init()
     end
 
     self.header.cbtn.DoClick = function()
+        self:SetTitle("Closed")
         self:Remove()
     end
 end
