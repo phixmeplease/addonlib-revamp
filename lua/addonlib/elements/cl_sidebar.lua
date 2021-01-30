@@ -19,13 +19,10 @@ function PANEL:Init()
 
     self.canvas = self:Add("DPanel")
     self.canvas:Dock(FILL)
-    self.canvas:DockMargin(10, 10, 10, 10)
+    self.canvas:DockMargin(0, 0, 0, 0)
 
     self.canvas.Paint = function(s, w, h)
-        local aX, aY = s:LocalToScreen()
-        BSHADOWS.BeginShadow()
-        draw.RoundedBox(6, aX, aY, w, h, addonlib.theme.navbar.background)
-        BSHADOWS.EndShadow(2, 1, 1)
+        draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.navbar.background)
     end
 end
 

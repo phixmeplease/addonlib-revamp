@@ -1,9 +1,3 @@
-surface.CreateFont("addonlib.fonts.buttonFont", {
-    font = "Montserrat Medium",
-    size = 30,
-    weight = 500,
-})
-
 local PANEL = {}
 
 AccessorFunc(PANEL, "body_element", "Body")
