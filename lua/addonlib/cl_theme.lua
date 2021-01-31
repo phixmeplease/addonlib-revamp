@@ -31,6 +31,7 @@ addonlib.theme = {
         grip = Color(50, 50, 50)
     },
     textbox = {
-        background = Color(45, 45, 45),
+        background = Color(50, 50, 50),
+        sel = Color(41, 128, 185),
     },
 }

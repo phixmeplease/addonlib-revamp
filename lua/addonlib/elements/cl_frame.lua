@@ -95,8 +95,7 @@ concommand.Add("addonlib_frame", function()
     end)
     ]]
 
-    local c = f:Add("addonlib.button")
+    local c = f:Add("addonlib.textentry")
     c:SetSize(500, 50)
     c:Center()
-    c:SetText("Big Bain")
 end)
