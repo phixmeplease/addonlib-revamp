@@ -43,9 +43,17 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn:SetContentAlignment(4)
     btn:SetTextInset(5, 0)
     btn.Paint = function(s, w, h)
-        addonlib.WebImage( ico, 5, 5, h - 10, h - 10, (self.active == btn.id) and addonlib.theme.navbar.acent or addonlib.bclr.white, 0, 0 )
+        if (self.active == s.id) then
+            draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.navbar.acent)
 
-        draw.SimpleText(name, "addonlib.fonts.buttonFont", h, h / 2, (self.active == btn.id) and addonlib.theme.navbar.acent or addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+            surface.SetDrawColor(255, 255, 255, 20)
+            surface.SetMaterial(addonlib.grad)
+            surface.DrawTexturedRect(0, 0, w, h)
+        end
+
+        addonlib.WebImage( ico, 5, 5, h - 10, h - 10, addonlib.bclr.white, 0, 0 )
+
+        draw.SimpleText(name, "addonlib.fonts.buttonFont", h, h / 2, addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
     btn.DoClick = function(s)
         self:SetActive(s.id)

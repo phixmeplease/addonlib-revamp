@@ -1,7 +1,10 @@
+addonlib.grad = Material("gui/gradient")
+addonlib.blur = Material("pp/blurscreen")
+
 addonlib.theme = {
     frame = {
-        background = Color(30, 30, 30),
-        header = Color(43, 43, 43),
+        background = Color(43, 43, 43),
+        header = Color(50, 50, 50),
         close = Color(231, 76, 60),
     },
     notif = {
@@ -12,18 +15,22 @@ addonlib.theme = {
         info = Color(41, 128, 185),
     },
     button = {
-        background = Color(52, 152, 219),
+        background = Color(45, 45, 45),
+        hover = Color(52, 152, 219)
     },
     navbar = {
         text = Color(200, 200, 200),
         acent = Color(34, 110, 250),
-        background = Color(40, 40, 40),
+        background = Color(45, 45, 45),
     },
     combo = {
-        background = Color(40, 40, 40),
+        background = Color(45, 45, 45),
     },
     scroll = {
-        background = Color(40, 40, 40),
+        background = Color(45, 45, 45),
         grip = Color(50, 50, 50)
+    },
+    textbox = {
+        background = Color(45, 45, 45),
     },
 }

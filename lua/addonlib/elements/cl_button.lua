@@ -13,17 +13,11 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
-    BSHADOWS.BeginShadow()
     if (self:IsHovered()) then
-        local aX, aY = self:LocalToScreen()
-        self.shadowLerp = Lerp(5 * FrameTime(), self.shadowLerp, 3)
-        draw.RoundedBox(h / 2, aX, aY, w, h, addonlib.theme.button.background)
+        draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.button.hover)
     else
-        local aX, aY = self:LocalToScreen()
-        self.shadowLerp = Lerp(5 * FrameTime(), self.shadowLerp, 0)
-        draw.RoundedBox(h / 2, aX, aY, w, h, addonlib.theme.button.background)
+        draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.button.background)
     end
-    BSHADOWS.EndShadow(3, self.shadowLerp, 2)
 end
 
 vgui.Register("addonlib.button", PANEL, "DButton")
