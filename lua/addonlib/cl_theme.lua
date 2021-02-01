@@ -15,7 +15,7 @@ addonlib.theme = {
         info = Color(41, 128, 185),
     },
     button = {
-        background = Color(45, 45, 45),
+        background = Color(50, 50, 50),
         hover = Color(52, 152, 219)
     },
     navbar = {
@@ -33,5 +33,12 @@ addonlib.theme = {
     textbox = {
         background = Color(50, 50, 50),
         sel = Color(41, 128, 185),
+    },
+    overhead = {
+        background = Color(30, 30, 30),
+        bar = Color(7, 113, 252),
+    },
+    slider = {
+        background = Color(70, 70, 70),
     },
 }
