@@ -19,7 +19,7 @@ local PANEL = {}
 
 function PANEL:Init()
     self.text = "Poggers, looks like the addon author messed somthing up, don't blame lion unless lion made the addon lol :D"
-    self.title = "POGGERS RGOIUHRIUEHOEROGUIHUGOHHGRIHIOUCDGHIOJDFGKLHJFGDLHKJDFGHKJLFDGLKJHKHJLFDJKHKJHDFGKJHGHJKFGHFGKJLHGHKJLFGHJGHJKL"
+    self.title = "addonlib"
 
     self.header = self:Add("DPanel")
     self.header:Dock(TOP)
