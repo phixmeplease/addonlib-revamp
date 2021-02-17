@@ -3,8 +3,9 @@ addonlib.blur = Material("pp/blurscreen")
 
 addonlib.theme = {
     frame = {
-        background = Color(43, 43, 43),
-        header = Color(50, 50, 50),
+        background = Color(30, 30, 30),
+        header = Color(40, 40, 40),
+        maximse = Color(142, 68, 173),
         close = Color(231, 76, 60),
     },
     notif = {
@@ -15,8 +16,8 @@ addonlib.theme = {
         info = Color(41, 128, 185),
     },
     button = {
-        background = Color(50, 50, 50),
-        hover = Color(52, 152, 219)
+        background = Color(45, 45, 45),
+        hover = Color(52, 152, 219),
     },
     navbar = {
         text = Color(200, 200, 200),
@@ -41,4 +42,11 @@ addonlib.theme = {
     slider = {
         background = Color(70, 70, 70),
     },
+    sidebar = {
+        background = Color(45, 45, 45),
+    },
+    url = {
+        urlnormal = Color(200, 200, 200),
+        urlhover = Color(231, 76, 60),
+    }
 }

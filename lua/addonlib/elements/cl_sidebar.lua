@@ -9,7 +9,6 @@ local PANEL = {}
 AccessorFunc(PANEL, "body_element", "Body")
 
 function PANEL:Init()
-
     self.buttons = {}
     self.pnls = {}
 
@@ -22,12 +21,18 @@ function PANEL:Init()
     self.canvas:DockMargin(0, 0, 0, 0)
 
     self.canvas.Paint = function(s, w, h)
-        draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.navbar.background)
+        draw.RoundedBoxEx(10, 0, 0, w, h, addonlib.theme.navbar.background, false, false, true, false)
     end
+
+    self.color = addonlib.theme.navbar.acent
+end
+
+function PANEL:SetColor(clr)
+    self.color = clr
 end
 
 function PANEL:AddTab(name, panel, panelFunc, ico)
-    ico = ico or "https://i.imgur.com/EX7D8Og.png"
+    ico = ico or ""
 
     local i = table.Count(self.buttons) + 1
     self.buttons[i] = self.canvas:Add("DButton")
@@ -37,23 +42,29 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn:SetText(name)
     btn:SetFont("addonlib.fonts.buttonFont")
     btn:SetColor(addonlib.theme.navbar.text)
-    btn:SetTall(32)
+    btn:SetTall(50)
+    btn:DockMargin(10, 0, 10, 0)
     btn:SizeToContentsX(32)
     btn:SetText("")
     btn:SetContentAlignment(4)
-    btn:SetTextInset(5, 0)
+    btn:SetTextInset(0, 0)
+    btn.lerpW = 0
+    btn.marH = 5
     btn.Paint = function(s, w, h)
         if (self.active == s.id) then
-            draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.navbar.acent)
-
-            surface.SetDrawColor(255, 255, 255, 20)
-            surface.SetMaterial(addonlib.grad)
-            surface.DrawTexturedRect(0, 0, w, h)
+            s.lerpW = Lerp(10 * FrameTime(), s.lerpW, w)
+            --draw.RoundedBox(5, s.lerpW, w / 2 - s.lerpW / 2, s.lerpW, h, self.color)
+            -- surface.SetDrawColor(255, 255, 255, 20)
+            -- surface.SetMaterial(addonlib.grad)
+            -- surface.DrawTexturedRect(0, 0, w, h)
+        else
+            s.lerpW = Lerp(10 * FrameTime(), s.lerpW, 0)
         end
 
-        addonlib.WebImage( ico, 5, 5, h - 10, h - 10, addonlib.bclr.white, 0, 0 )
+        draw.RoundedBox(5, 0, s.marH, w, h - s.marH * 2, addonlib.theme.sidebar.background)
+        draw.RoundedBox(5, w / 2 - s.lerpW / 2, s.marH, s.lerpW, h - s.marH * 2, self.color)
 
-        draw.SimpleText(name, "addonlib.fonts.buttonFont", h, h / 2, addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+        draw.SimpleText(name, "addonlib.fonts.buttonFont", w / 2, h / 2, addonlib.bclr.white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
     end
     btn.DoClick = function(s)
         self:SetActive(s.id)

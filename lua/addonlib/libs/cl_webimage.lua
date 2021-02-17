@@ -30,7 +30,7 @@ local function fetch_asset(url)
 	local crc = crc(url)
 
 	if exists("downloaded_assets/" .. crc .. ".png", "DATA") then
-		mats[url] = Material("data/downloaded_assets/" .. crc .. ".png")
+		mats[url] = Material("data/downloaded_assets/" .. crc .. ".png", "noclamp smooth")
 
 		return mats[url]
 	end
@@ -39,7 +39,7 @@ local function fetch_asset(url)
 
 	fetch(url, function(data)
 		write("downloaded_assets/" .. crc .. ".png", data)
-		mats[url] = Material("data/downloaded_assets/" .. crc .. ".png")
+		mats[url] = Material("data/downloaded_assets/" .. crc .. ".png", "noclamp smooth")
 	end)
 
 	return mats[url]
@@ -57,16 +57,6 @@ function addonlib.WebImage( url, x, y, width, height, color, angle, cornerorigin
 			surface.DrawTexturedRectRotated( x, y, width, height, angle )
 		else
 			surface.DrawTexturedRectRotated( x + width / 2, y + height / 2, width, height, angle )
-		end
-	end
-end
-
-function addonlib.SeamlessWebImage( url, parentwidth, parentheight, xrep, yrep, color )
-	color = color or white
-	local xiwx, yihy = math.ceil( parentwidth/xrep ), math.ceil( parentheight/yrep )
-	for x = 0, xrep - 1 do
-		for y = 0, yrep - 1 do
-			addonlib.WebImage( url, x*xiwx, y*yihy, xiwx, yihy, color )
 		end
 	end
 end

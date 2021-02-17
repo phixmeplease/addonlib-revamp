@@ -1,6 +1,6 @@
 surface.CreateFont("addonlib.textentry", {
     font = "Montserrat Medium",
-    size = 20,
+    size = 25,
     weight = 500,
 })
 
@@ -11,7 +11,7 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
-    draw.RoundedBox(0, 0, 0, w, h, addonlib.theme.textbox.background)
+    draw.RoundedBox(5, 0, 0, w, h, addonlib.theme.textbox.background)
     self:DrawTextEntryText(addonlib.bclr.white, addonlib.theme.textbox.sel, addonlib.bclr.white)
 end
 

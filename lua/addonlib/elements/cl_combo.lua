@@ -9,6 +9,7 @@ local PANEL = {}
 function PANEL:Init()
     self.combo = self:Add("DComboBox")
     self.combo:Dock(FILL)
+    --self.combo
     self.combo.DropButton.Paint = nil
     
     self.combo.Think = function(s)
@@ -17,7 +18,7 @@ function PANEL:Init()
     end
 
     self.combo.Paint = function(s, w, h)
-        draw.RoundedBox(8, 0, 0, w, h, addonlib.theme.combo.background)
+        draw.RoundedBox(5, 0, 0, w, h, addonlib.theme.combo.background)
         draw.SimpleText(s:GetValue(), "addonlib.fonts.comboFont", 5, h / 2, addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
 end
