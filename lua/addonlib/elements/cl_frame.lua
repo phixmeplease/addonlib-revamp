@@ -20,6 +20,7 @@ local PANEL = {}
 function PANEL:Init()
     self.text = "Poggers, looks like the addon author messed somthing up, don't blame lion unless lion made the addon lol :D"
     self.title = "addonlib"
+    self.blur = false
 
     self.header = self:Add("DPanel")
     self.header:Dock(TOP)
@@ -115,6 +116,10 @@ function PANEL:Init()
 
 end
 
+function PANEL:SetBlur(tbl)
+    self.blur = tbl
+end
+
 function PANEL:Paint(w, h)
     local aX, aY = self:LocalToScreen()
     BSHADOWS.BeginShadow()
@@ -142,6 +147,7 @@ concommand.Add("addonlib_frame", function()
     f:SetSize(ScrW() * .75, ScrH() * .75)
     f:Center()
     f:MakePopup(true)
+    f:SetBlur(true)
     f:SetHelp("Didn't Ask")
 
     
