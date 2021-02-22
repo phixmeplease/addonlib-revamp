@@ -43,7 +43,7 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn:SetFont("addonlib.fonts.buttonFont")
     btn:SetColor(addonlib.theme.navbar.text)
     btn:SetTall(50)
-    btn:DockMargin(10, 0, 10, 0)
+    btn:DockMargin(0, 0, 0, 0)
     btn:SizeToContentsX(32)
     btn:SetText("")
     btn:SetContentAlignment(4)
@@ -52,17 +52,8 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn.marH = 5
     btn.Paint = function(s, w, h)
         if (self.active == s.id) then
-            s.lerpW = Lerp(10 * FrameTime(), s.lerpW, w)
-            --draw.RoundedBox(5, s.lerpW, w / 2 - s.lerpW / 2, s.lerpW, h, self.color)
-            -- surface.SetDrawColor(255, 255, 255, 20)
-            -- surface.SetMaterial(addonlib.grad)
-            -- surface.DrawTexturedRect(0, 0, w, h)
-        else
-            s.lerpW = Lerp(10 * FrameTime(), s.lerpW, 0)
+            draw.RoundedBoxEx(6, 0, 0, 6, h, self.color, false, true, false, true)
         end
-
-        draw.RoundedBox(5, 0, s.marH, w, h - s.marH * 2, addonlib.theme.sidebar.background)
-        draw.RoundedBox(5, w / 2 - s.lerpW / 2, s.marH, s.lerpW, h - s.marH * 2, self.color)
 
         draw.SimpleText(name, "addonlib.fonts.buttonFont", w / 2, h / 2, addonlib.bclr.white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
     end

@@ -27,7 +27,7 @@ function PANEL:Init()
     self.header:SetTall(50)
 
     self.header.Paint = function(s, w, h)
-        draw.RoundedBoxEx(10, 0, 0, w, h, addonlib.theme.frame.header, true, true, false, false)
+        draw.RoundedBoxEx(6, 0, 0, w, h, addonlib.theme.frame.header, true, true, false, false)
         draw.SimpleText(self.title, "addonlib.fonts.frameTitle", 5, h / 2, addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
 
@@ -123,7 +123,7 @@ end
 function PANEL:Paint(w, h)
     local aX, aY = self:LocalToScreen()
     BSHADOWS.BeginShadow()
-    draw.RoundedBox(10, aX, aY, w, h, addonlib.theme.frame.background)
+    draw.RoundedBox(6, aX, aY, w, h, addonlib.theme.frame.background)
     BSHADOWS.EndShadow(3, 2, 2)
 end
 
@@ -151,24 +151,24 @@ concommand.Add("addonlib_frame", function()
     f:SetHelp("Didn't Ask")
 
     
-    -- local c = f:Add("addonlib.navbar")
-    -- c:Dock(TOP)
+    local c = f:Add("addonlib.sidebar")
+    c:Dock(LEFT)
+    
+    c:SetBody(f)
+
+    c:AddTab("Cool People", "DPanel")
+    c:AddTab("Bad People", "DButton")
+    c:AddTab("Ok People", "DHTML", function(s)
+        s:OpenURL("https://www.google.com/")
+    end)
+
+    -- local c = f:Add("addonlib.combobox")
+    -- c:SetSize(500, 50)
     -- c:Center()
-    -- c:SetBody(f)
 
-    -- c:AddTab("Cool People", "DPanel")
-    -- c:AddTab("Bad People", "DButton")
-    -- c:AddTab("Ok People", "DHTML", function(s)
-    --     s:OpenURL("https://www.google.com/")
-    -- end)
-
-    local c = f:Add("addonlib.combobox")
-    c:SetSize(500, 50)
-    c:Center()
-
-    for i = 1, 100 do
-        c:AddChoice(i)
-    end
+    -- for i = 1, 100 do
+    --     c:AddChoice(i)
+    -- end
     
 
     -- local c = f:Add("addonlib.textentry")
