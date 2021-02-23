@@ -3,8 +3,8 @@ addonlib.blur = Material("pp/blurscreen")
 
 addonlib.theme = {
     frame = {
-        background = Color(30, 30, 30),
-        header = Color(40, 40, 40),
+        background = Color(40, 40, 40),
+        header = Color(43, 43, 43),
         maximse = Color(142, 68, 173),
         close = Color(231, 76, 60),
     },
