@@ -4,7 +4,7 @@ addonlib.blur = Material("pp/blurscreen")
 addonlib.theme = {
     frame = {
         background = Color(40, 40, 40),
-        header = Color(43, 43, 43),
+        header = Color(50, 50, 50),
         maximse = Color(142, 68, 173),
         close = Color(231, 76, 60),
     },
@@ -22,7 +22,7 @@ addonlib.theme = {
     navbar = {
         text = Color(200, 200, 200),
         acent = Color(34, 110, 250),
-        background = Color(45, 45, 45),
+        background = Color(43, 43, 43),
     },
     combo = {
         background = Color(45, 45, 45),

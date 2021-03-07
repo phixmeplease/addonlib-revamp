@@ -18,9 +18,9 @@ addonlib.multiColorText = function(font, x, y, xall, yall, ...)
         curX = x - w
     end
     if (yall == TEXT_ALIGN_CENTER) then
-        y = y - h / 2
+        y = y - textH / 2
     elseif (yall == TEXT_ALIGN_BOTTOM) then
-        y = y - h
+        y = y - textH
     end
     for k, v in pairs{...} do
         if (IsColor(v)) then

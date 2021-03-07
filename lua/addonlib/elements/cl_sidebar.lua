@@ -42,7 +42,7 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn:SetText(name)
     btn:SetFont("addonlib.fonts.buttonFont")
     btn:SetColor(addonlib.theme.navbar.text)
-    btn:SetTall(50)
+    btn:SetTall(35)
     btn:DockMargin(0, 0, 0, 0)
     btn:SizeToContentsX(32)
     btn:SetText("")
@@ -50,12 +50,21 @@ function PANEL:AddTab(name, panel, panelFunc, ico)
     btn:SetTextInset(0, 0)
     btn.lerpW = 0
     btn.marH = 5
+    btn.iconSize = 5
     btn.Paint = function(s, w, h)
         if (self.active == s.id) then
-            draw.RoundedBoxEx(6, 0, 0, 6, h, self.color, false, true, false, true)
+            s.lerpW = Lerp(0.2, s.lerpW, h)
+        else
+            s.lerpW = Lerp(0.2, s.lerpW, 0)
         end
 
-        draw.SimpleText(name, "addonlib.fonts.buttonFont", w / 2, h / 2, addonlib.bclr.white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+        if (self.active == s.id) then
+            draw.RoundedBoxEx(0, 0, h / 2 - s.lerpW / 2, w, s.lerpW, self.color, false, true, false, true)
+        end
+
+        addonlib.WebImage( ico, s.iconSize, s.iconSize, h - s.iconSize * 2, h - s.iconSize * 2, color_white, 0, 0)
+
+        draw.SimpleText(name, "addonlib.fonts.buttonFont", h, h / 2, addonlib.bclr.white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
     btn.DoClick = function(s)
         self:SetActive(s.id)

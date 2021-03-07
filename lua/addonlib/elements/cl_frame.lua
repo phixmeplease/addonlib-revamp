@@ -24,7 +24,7 @@ function PANEL:Init()
 
     self.header = self:Add("DPanel")
     self.header:Dock(TOP)
-    self.header:SetTall(50)
+    self.header:SetTall(40)
 
     self.header.Paint = function(s, w, h)
         draw.RoundedBoxEx(6, 0, 0, w, h, addonlib.theme.frame.header, true, true, false, false)
@@ -42,7 +42,7 @@ function PANEL:Init()
     self.header.cbtn.lerpG = 255
     self.header.cbtn.lerpB = 255
 
-    self.header.cbtn.margin = 18
+    self.header.cbtn.margin = 10
 
     -- https://i.imgur.com/qEIG9YT.png
 
@@ -77,7 +77,7 @@ function PANEL:Init()
     self.header.question.lerpG = 255
     self.header.question.lerpB = 255
 
-    self.header.question.margin = 18
+    self.header.question.margin = 10
 
     self.header.question.Paint = function(s, w, h)
         if (s:IsHovered()) then
@@ -122,9 +122,10 @@ end
 
 function PANEL:Paint(w, h)
     local aX, aY = self:LocalToScreen()
-    BSHADOWS.BeginShadow()
-    draw.RoundedBox(6, aX, aY, w, h, addonlib.theme.frame.background)
-    BSHADOWS.EndShadow(3, 2, 2)
+    draw.RoundedBox(6, 0, 0, w, h, ColorAlpha(addonlib.theme.frame.background, 200))
+    //BSHADOWS.BeginShadow()
+    
+    //BSHADOWS.EndShadow(3, 2, 2)
 end
 
 function PANEL:SetHelp(text)
